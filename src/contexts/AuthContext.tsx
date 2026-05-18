@@ -25,6 +25,7 @@ interface AuthState {
 interface AuthContextType extends AuthState {
   signUp: (email: string, password: string, metadata: { name: string; phone?: string; role: 'owner' | 'renter' }) => Promise<{ error: string | null }>
   signIn: (email: string, password: string) => Promise<{ error: string | null }>
+  signInWithGoogle: () => Promise<{ error: string | null }>
   signOut: () => Promise<void>
   updateProfile: (data: Partial<Profile>) => Promise<{ error: string | null }>
 }
@@ -138,6 +139,22 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     return { error: null }
   }
 
+  const signInWithGoogle = async (): Promise<{ error: string | null }> => {
+    if (!isSupabaseConfigured()) {
+      return { error: 'Supabase is not configured. Add your credentials to .env' }
+    }
+
+    const { error } = await supabase.auth.signInWithOAuth({
+      provider: 'google',
+      options: {
+        redirectTo: window.location.origin,
+      },
+    })
+
+    if (error) return { error: error.message }
+    return { error: null }
+  }
+
   const signOut = async () => {
     await supabase.auth.signOut()
     setState({
@@ -165,7 +182,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   }
 
   return (
-    <AuthContext.Provider value={{ ...state, signUp, signIn, signOut, updateProfile }}>
+    <AuthContext.Provider value={{ ...state, signUp, signIn, signInWithGoogle, signOut, updateProfile }}>
       {children}
     </AuthContext.Provider>
   )
