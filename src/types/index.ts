@@ -25,6 +25,8 @@ export interface Vehicle {
   seats: number
   pricePerDay: number
   location: string
+  latitude: number
+  longitude: number
   images: string[]
   description: string
   features: string[]

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Button } from '@/components/ui/button'
-import { Car, Upload, Check, Loader2 } from 'lucide-react'
+import { Car, Upload, Check, Loader2, MapPin } from 'lucide-react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '@/contexts/AuthContext'
 import { createVehicle } from '@/lib/vehicles'
@@ -26,11 +26,34 @@ export default function ListVehicle() {
   const [description, setDescription] = useState('')
   const [pricePerDay, setPricePerDay] = useState('')
   const [location, setLocation] = useState('')
+  const [latitude, setLatitude] = useState('')
+  const [longitude, setLongitude] = useState('')
+  const [detectingLocation, setDetectingLocation] = useState(false)
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
       setFiles(Array.from(e.target.files))
     }
+  }
+
+  const detectLocation = () => {
+    if (!navigator.geolocation) {
+      toast.error('Geolocation is not supported by your browser')
+      return
+    }
+    setDetectingLocation(true)
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        setLatitude(position.coords.latitude.toFixed(6))
+        setLongitude(position.coords.longitude.toFixed(6))
+        setDetectingLocation(false)
+        toast.success('Location detected!')
+      },
+      () => {
+        toast.error('Unable to detect location. Please enter manually.')
+        setDetectingLocation(false)
+      }
+    )
   }
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -65,6 +88,8 @@ export default function ListVehicle() {
       seats: parseInt(seats),
       price_per_day: parseFloat(pricePerDay),
       location,
+      latitude: latitude ? parseFloat(latitude) : 6.9271,
+      longitude: longitude ? parseFloat(longitude) : 79.8612,
       images: urls,
       description,
       features: [],
@@ -182,6 +207,40 @@ export default function ListVehicle() {
               <label className="text-xs font-medium text-foreground">Location</label>
               <input required value={location} onChange={(e) => setLocation(e.target.value)} placeholder="e.g. Colombo 07" className="mt-1 w-full h-10 px-3 rounded-lg border border-border bg-background text-sm focus:outline-none focus:ring-2 focus:ring-primary/50" />
             </div>
+          </div>
+          {/* GPS Coordinates */}
+          <div>
+            <div className="flex items-center justify-between mb-1">
+              <label className="text-xs font-medium text-foreground">GPS Coordinates</label>
+              <button
+                type="button"
+                onClick={detectLocation}
+                disabled={detectingLocation}
+                className="text-xs text-primary font-medium hover:underline flex items-center gap-1"
+              >
+                <MapPin className="h-3 w-3" />
+                {detectingLocation ? 'Detecting...' : 'Detect My Location'}
+              </button>
+            </div>
+            <div className="grid grid-cols-2 gap-3">
+              <input
+                type="number"
+                step="any"
+                value={latitude}
+                onChange={(e) => setLatitude(e.target.value)}
+                placeholder="Latitude (e.g. 6.9271)"
+                className="w-full h-10 px-3 rounded-lg border border-border bg-background text-sm focus:outline-none focus:ring-2 focus:ring-primary/50"
+              />
+              <input
+                type="number"
+                step="any"
+                value={longitude}
+                onChange={(e) => setLongitude(e.target.value)}
+                placeholder="Longitude (e.g. 79.8612)"
+                className="w-full h-10 px-3 rounded-lg border border-border bg-background text-sm focus:outline-none focus:ring-2 focus:ring-primary/50"
+              />
+            </div>
+            <p className="mt-1 text-[10px] text-muted-foreground">Used to show your vehicle on the map. Click "Detect My Location" or enter manually.</p>
           </div>
           <div>
             <label className="text-xs font-medium text-foreground">Photos</label>

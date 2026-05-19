@@ -5,6 +5,7 @@ import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
 import Home from '@/pages/Home'
 import Browse from '@/pages/Browse'
+import MapView from '@/pages/MapView'
 import VehicleDetail from '@/pages/VehicleDetail'
 import ListVehicle from '@/pages/ListVehicle'
 import OwnerDashboard from '@/pages/OwnerDashboard'
@@ -23,6 +24,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/browse" element={<Browse />} />
+              <Route path="/map" element={<MapView />} />
               <Route path="/vehicles/:id" element={<VehicleDetail />} />
               <Route path="/list-vehicle" element={<ListVehicle />} />
               <Route path="/owner/dashboard" element={<OwnerDashboard />} />

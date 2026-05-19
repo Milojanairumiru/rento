@@ -63,6 +63,8 @@ export const mockVehicles: Vehicle[] = [
     seats: 5,
     pricePerDay: 45,
     location: 'Colombo 07',
+    latitude: 6.9147,
+    longitude: 79.8624,
     images: [
       'https://images.unsplash.com/photo-1621007947382-bb3c3994e3fb?w=800',
       'https://images.unsplash.com/photo-1549317661-bd32c8ce0afa?w=800',
@@ -89,6 +91,8 @@ export const mockVehicles: Vehicle[] = [
     seats: 5,
     pricePerDay: 65,
     location: 'Colombo 03',
+    latitude: 6.9271,
+    longitude: 79.8512,
     images: [
       'https://images.unsplash.com/photo-1568844293986-8d0400f3a7b2?w=800',
       'https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?w=800',
@@ -115,6 +119,8 @@ export const mockVehicles: Vehicle[] = [
     seats: 4,
     pricePerDay: 25,
     location: 'Kandy',
+    latitude: 7.2906,
+    longitude: 80.6337,
     images: [
       'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=800',
       'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800',
@@ -141,6 +147,8 @@ export const mockVehicles: Vehicle[] = [
     seats: 5,
     pricePerDay: 85,
     location: 'Galle',
+    latitude: 6.0535,
+    longitude: 80.2210,
     images: [
       'https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?w=800',
       'https://images.unsplash.com/photo-1542282088-72c9c27ed0cd?w=800',
@@ -167,6 +175,8 @@ export const mockVehicles: Vehicle[] = [
     seats: 5,
     pricePerDay: 120,
     location: 'Colombo 07',
+    latitude: 6.9108,
+    longitude: 79.8650,
     images: [
       'https://images.unsplash.com/photo-1555215695-3004980ad54e?w=800',
       'https://images.unsplash.com/photo-1580273916550-e323be2ae537?w=800',
@@ -193,6 +203,8 @@ export const mockVehicles: Vehicle[] = [
     seats: 5,
     pricePerDay: 55,
     location: 'Colombo 05',
+    latitude: 6.8942,
+    longitude: 79.8579,
     images: [
       'https://images.unsplash.com/photo-1560958089-b8a1929cea89?w=800',
       'https://images.unsplash.com/photo-1593941707882-a5bba14938c7?w=800',

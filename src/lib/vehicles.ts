@@ -111,6 +111,8 @@ export async function createVehicle(vehicle: {
   seats: number
   price_per_day: number
   location: string
+  latitude?: number
+  longitude?: number
   images: string[]
   description: string
   features: string[]
@@ -199,6 +201,8 @@ function toVehicle(row: any): Vehicle {
     seats: row.seats,
     pricePerDay: Number(row.price_per_day),
     location: row.location,
+    latitude: Number(row.latitude) || 6.9271,
+    longitude: Number(row.longitude) || 79.8612,
     images: row.images,
     description: row.description,
     features: row.features,

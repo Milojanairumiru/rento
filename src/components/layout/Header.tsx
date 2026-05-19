@@ -8,6 +8,7 @@ import { toast } from 'sonner'
 
 const navLinks = [
   { href: '/browse', label: 'Browse Vehicles' },
+  { href: '/map', label: 'Map' },
   { href: '/list-vehicle', label: 'List Your Vehicle' },
   { href: '/owner/dashboard', label: 'Owner Dashboard' },
   { href: '/renter/dashboard', label: 'My Trips' },
