@@ -26,12 +26,12 @@ export function Header() {
   }
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <header className="sticky top-0 z-50 w-full bg-navy text-white shadow-lg">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2">
           <Car className="h-6 w-6 text-primary" />
-          <span className="text-xl font-bold tracking-tight text-foreground">rento</span>
+          <span className="text-xl font-bold tracking-tight text-white">rento</span>
         </Link>
 
         {/* Desktop Nav */}
@@ -43,8 +43,8 @@ export function Header() {
               className={cn(
                 'px-3 py-2 text-sm font-medium rounded-md transition-colors',
                 location.pathname === link.href
-                  ? 'text-primary bg-primary-light/50'
-                  : 'text-muted-foreground hover:text-foreground hover:bg-muted'
+                  ? 'text-primary bg-white/10'
+                  : 'text-white/70 hover:text-white hover:bg-white/10'
               )}
             >
               {link.label}
@@ -56,19 +56,19 @@ export function Header() {
         <div className="hidden md:flex items-center gap-2">
           {isAuthenticated ? (
             <>
-              <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-muted">
-                <div className="h-7 w-7 rounded-full bg-primary-light flex items-center justify-center">
+              <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/10">
+                <div className="h-7 w-7 rounded-full bg-primary flex items-center justify-center">
                   {profile?.avatar_url ? (
                     <img src={profile.avatar_url} alt="" className="h-7 w-7 rounded-full object-cover" />
                   ) : (
-                    <User className="h-4 w-4 text-primary-dark" />
+                    <User className="h-4 w-4 text-navy" />
                   )}
                 </div>
-                <span className="text-sm font-medium text-foreground max-w-[120px] truncate">
+                <span className="text-sm font-medium text-white max-w-[120px] truncate">
                   {profile?.name || 'User'}
                 </span>
               </div>
-              <Button variant="ghost" size="sm" onClick={handleSignOut}>
+              <Button variant="ghost" size="sm" className="text-white/70 hover:text-white hover:bg-white/10" onClick={handleSignOut}>
                 <LogOut className="h-4 w-4 mr-1" />
                 Sign out
               </Button>
@@ -76,12 +76,12 @@ export function Header() {
           ) : (
             <>
               <Link to="/login">
-                <Button variant="ghost" size="sm">
+                <Button variant="ghost" size="sm" className="text-white/70 hover:text-white hover:bg-white/10">
                   Log in
                 </Button>
               </Link>
               <Link to="/signup">
-                <Button size="sm">Sign up</Button>
+                <Button size="sm" className="bg-primary text-navy hover:bg-primary-dark font-semibold">Sign up</Button>
               </Link>
             </>
           )}
@@ -89,16 +89,16 @@ export function Header() {
 
         {/* Mobile Menu Toggle */}
         <button
-          className="md:hidden p-2 rounded-md hover:bg-muted"
+          className="md:hidden p-2 rounded-md hover:bg-white/10"
           onClick={() => setMobileOpen(!mobileOpen)}
         >
-          {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          {mobileOpen ? <X className="h-5 w-5 text-white" /> : <Menu className="h-5 w-5 text-white" />}
         </button>
       </div>
 
       {/* Mobile Nav */}
       {mobileOpen && (
-        <div className="md:hidden border-t border-border bg-background px-4 pb-4">
+        <div className="md:hidden border-t border-white/10 bg-navy px-4 pb-4">
           <nav className="flex flex-col gap-1 pt-3">
             {navLinks.map((link) => (
               <Link

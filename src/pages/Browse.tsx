@@ -131,7 +131,7 @@ export default function Browse() {
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
-      <div className="bg-gradient-to-b from-primary/5 to-background pb-4">
+      <div className="bg-gradient-to-b from-navy/5 to-background pb-4">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-6">
           <div className="flex items-center justify-between">
             <div>
