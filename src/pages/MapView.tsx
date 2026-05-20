@@ -116,7 +116,7 @@ export default function MapView() {
   }, [search])
 
   return (
-    <div className="h-[calc(100vh-64px)] flex flex-col md:flex-row relative">
+    <div className="h-[calc(100vh-64px-64px)] flex flex-col md:flex-row relative">
       {/* Sidebar - Vehicle List */}
       <div
         className={cn(

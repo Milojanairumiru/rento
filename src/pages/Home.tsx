@@ -173,14 +173,14 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-12 bg-navy">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-2xl md:text-3xl font-bold text-white">Got a vehicle sitting idle?</h2>
-          <p className="mt-3 text-white/60 max-w-md mx-auto text-sm">
-            Turn your parked car into passive income. List it on Rento and start earning today.
+      <section className="py-8 mx-4 mb-4 bg-navy rounded-2xl">
+        <div className="px-6 text-center">
+          <h2 className="text-xl font-bold text-white">Got a vehicle sitting idle?</h2>
+          <p className="mt-2 text-white/60 text-sm">
+            Turn your parked car into passive income.
           </p>
           <Link to="/list-vehicle">
-            <Button size="lg" className="mt-6 bg-primary text-navy hover:bg-primary-dark font-semibold shadow-lg">
+            <Button size="lg" className="mt-4 bg-primary text-navy hover:bg-primary-dark font-semibold shadow-lg rounded-xl">
               Start Earning
             </Button>
           </Link>
